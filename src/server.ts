@@ -1,9 +1,16 @@
-import express from 'express'
+import express, { NextFunction, Request, Response } from 'express';
+import notesRouter from './routes/notes';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 
-const PORT = 3000;
+// API routes
+app.use('/api/v1/notes', notesRouter);
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`)
+// Server setup
+// const PORT = process.env.PORT;
+
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT}`)
 });
